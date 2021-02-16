@@ -30,7 +30,7 @@ namespace Postomate.Tests.Api.Controllers
             _logger = logger;
         }
 
-        private readonly Dictionary<string, Person> persons = new Dictionary<string, Person>();
+        private static readonly Dictionary<string, Person> persons = new Dictionary<string, Person>();
 
         [HttpGet]
         public IEnumerable<Person> Get() => persons.Values;
@@ -48,43 +48,43 @@ namespace Postomate.Tests.Api.Controllers
             return Ok(person);
         }
 
-        [HttpPatch]
-        public ActionResult Post(string personId, JsonPatchDocument<Person> patch)
-        {
-            if (!persons.ContainsKey(personId)) {
-                return NotFound();
-            }
+        //[HttpPatch]
+        //public ActionResult Post(string personId, JsonPatchDocument<Person> patch)
+        //{
+        //    if (!persons.ContainsKey(personId)) {
+        //        return NotFound();
+        //    }
 
-            var person = persons[personId];
+        //    var person = persons[personId];
 
-            patch.ApplyTo(person);
+        //    patch.ApplyTo(person);
 
-            return Ok(person);
-        }
+        //    return Ok(person);
+        //}
 
-        [HttpPut]
-        public ActionResult<Person> Put(Person person)
-        {
-            person.CreatedAt = DateTimeOffset.Now;
-            person.Id = Guid.NewGuid().ToString();
+        //[HttpPut]
+        //public ActionResult<Person> Put(Person person)
+        //{
+        //    person.CreatedAt = DateTimeOffset.Now;
+        //    person.Id = Guid.NewGuid().ToString();
 
-            persons[person.Id] = person;
+        //    persons[person.Id] = person;
 
-            return Ok(person);
-        }
+        //    return Ok(person);
+        //}
 
-        [HttpDelete]
-        public ActionResult<Person> Delete(string personId)
-        {
+        //[HttpDelete]
+        //public ActionResult<Person> Delete(string personId)
+        //{
 
-            if (!persons.ContainsKey(personId)) {
-                return NotFound();
-            }
+        //    if (!persons.ContainsKey(personId)) {
+        //        return NotFound();
+        //    }
 
-            persons.Remove(personId);
+        //    persons.Remove(personId);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
     }
 }

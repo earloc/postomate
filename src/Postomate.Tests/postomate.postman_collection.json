@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "74619183-f5ef-47e8-ace4-e5007c7e6a75",
+		"name": "postomate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllPersons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/person",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostPerson",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//pm.variables.set(\"firstName\", \"Arthur\")\r",
+							"//pm.variables.set(\"lastName\", \"Dent\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/person?firstName={{firstName}}&surname={{lastName}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"person"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "{{firstName}}"
+						},
+						{
+							"key": "surname",
+							"value": "{{lastName}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PostPerson",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/person?firstName=Arthur&surname=Dent",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"person"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Arthur"
+								},
+								{
+									"key": "surname",
+									"value": "Dent"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Feb 2021 21:51:20 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"dfba7466-3852-4d5b-9d3e-2ffabfeb8142\",\n    \"firstName\": \"Arthur\",\n    \"surname\": \"Dent\",\n    \"createdAt\": \"2021-02-16T22:51:20.2787771+01:00\"\n}"
+				},
+				{
+					"name": "Zaphod Beeblebrox",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/person?firstName=Zaphod&surname=Beeblebrox",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"person"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Zaphod"
+								},
+								{
+									"key": "surname",
+									"value": "Beeblebrox"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Feb 2021 21:50:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"32160bf6-f682-4d9f-9b36-116ab4496eb4\",\n    \"firstName\": \"Zaphod\",\n    \"surname\": \"Beeblebrox\",\n    \"createdAt\": \"2021-02-16T22:50:01.7196163+01:00\"\n}"
+				}
+			]
+		}
+	]
+}
