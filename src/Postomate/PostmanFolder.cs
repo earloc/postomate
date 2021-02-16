@@ -37,24 +37,28 @@ namespace Postomate
             return request.Value;
         }
 
-        internal PostmanGrapqhQlRequest FindGrapqhQl(Regex regex, VariableContext context) 
+        public PostmanGrapqhQlRequest FindGrapqhQl(Regex regex, VariableContext context) 
             => new PostmanGrapqhQlRequest(FindBy(regex), context, collection.Log);
 
-        internal PostmanGrapqhQlRequest FindGrapqhQl(string name, VariableContext context)
+        public PostmanGrapqhQlRequest FindGrapqhQl(string name, VariableContext context)
             => new PostmanGrapqhQlRequest(FindBy(name), context, collection.Log);
 
-        internal PostmanRawRequest FindRaw(Regex regex, VariableContext context) 
+        public PostmanRawRequest FindRaw(Regex regex, VariableContext context) 
             => new PostmanRawRequest(FindBy(regex), context, collection.Log);
-        
-        internal PostmanRawRequest FindRaw(string name, VariableContext context) 
+
+        public PostmanRawRequest FindRaw(string name, VariableContext context) 
             => new PostmanRawRequest(FindBy(name), context, collection.Log);
-        internal PostmanRawRequest FindJson(Regex regex, VariableContext context)
+
+        public PostmanRawRequest FindJson(string name, VariableContext context)
+            => new PostmanJsonRequest(FindBy(name), context, collection.Log);
+
+        public PostmanRawRequest FindJson(Regex regex, VariableContext context)
             => new PostmanJsonRequest(FindBy(regex), context, collection.Log);
 
-        internal PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, VariableContext context)
+        public PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, VariableContext context)
             => new PostmanFormUrlEncodedRequest(FindBy(regex), context, collection.Log);
 
-        internal PostmanFormUrlEncodedRequest FindFormUrlEncoded(string name, VariableContext context)
+        public PostmanFormUrlEncodedRequest FindFormUrlEncoded(string name, VariableContext context)
             => new PostmanFormUrlEncodedRequest(FindBy(name), context, collection.Log);
     }
 }

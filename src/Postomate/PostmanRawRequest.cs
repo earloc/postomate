@@ -11,9 +11,11 @@ namespace Postomate
         {
             var request = enrichedElement.GetProperty("request");
             Body = request.GetProperty("body").GetProperty("raw").GetString() ?? "";
+            RawBody = element.GetProperty("request").GetProperty("body").GetProperty("raw").GetString() ?? "";
 
         }
         public string Body { get; }
+        public string RawBody { get; }
 
         public string MediaType { get; protected set; } = "application/xml";
 
