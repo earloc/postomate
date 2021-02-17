@@ -12,22 +12,27 @@ namespace Postomate
     public abstract class PostmanRequestBase
     {
         protected readonly JsonElement enrichedElement;
+
+        public string EnrichedContent { get; }
+        public string RawContent { get; }
+
         private readonly Action<string> log;
 
         protected PostmanRequestBase(JsonElement element, VariableContext context, Action<string> log)
         {
             this.log = log;
-            var enrichedString = element.ToString() ?? "";
+            RawContent = element.ToString() ?? "";
+            EnrichedContent = RawContent;
 
             foreach(var variable in context.Variables)
             {
                 var oldValue = $"{{{{{variable.Key}}}}}";
                 var newValue = variable.Value;
 
-                enrichedString = enrichedString.Replace(oldValue, newValue);
+                EnrichedContent = EnrichedContent.Replace(oldValue, newValue);
             }
 
-            this.enrichedElement = JsonDocument.Parse(enrichedString).RootElement;
+            this.enrichedElement = JsonDocument.Parse(EnrichedContent).RootElement;
 
             var request = enrichedElement.GetProperty("request");
             Url = request.GetProperty("url").GetProperty("raw").GetString() ?? "";
@@ -57,10 +62,9 @@ namespace Postomate
 
                 Authorization = new AuthenticationHeaderValue("Bearer", token);
             }
-
-            
-
         }
+
+
         public string Url { get; }
         public HttpMethod Method { get; }
 

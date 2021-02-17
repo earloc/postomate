@@ -22,12 +22,14 @@ namespace Postomate.Tests
             sut = PostmanCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
             api = fixture.Api;
 
-            variables = new VariableContext();
+            variables = new VariableContext(new { 
+                baseUrl = "http://localhost:5042"
+            });
         }
 
 
         [Fact]
-        public async Task Posting_A_Person_Substitutes_Variables_Json()
+        public async Task Finding_A_Request_Substitutes_Variables()
         {
             variables.Enrich(new
             {
@@ -38,7 +40,9 @@ namespace Postomate.Tests
             var folder = sut.FindFolder("Tests");
             var request = folder.FindJson("PostPerson", variables);
 
-            request.Body.Should().NotBe(request.RawBody, "we expect to the two to be unequal");
+            request.EnrichedContent.Should().NotBe(request.RawContent, "we expect the two to be unequal");
+            request.Url.Should().Contain("Zaphod");
+            request.Url.Should().Contain("Beeblebrox");
 
         }
     }
