@@ -1,0 +1,35 @@
+name: postomate
+
+# Run workflow on every push to the master branch
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    # use ubuntu-latest image to run steps on
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.102
+
+    - name: restore
+      run: dotnet restore
+
+    - name: build
+      run: dotnet build -c Release --nologo --no-restore
+
+    - name: test
+      run: dotnet test -c Release --no-build /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      
+    - name: Publish coverage report to coveralls.io   
+      uses: coverallsapp/github-action@master   
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }} 
+        path-to-lcov: TestResults/**/coverage.info 
