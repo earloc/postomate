@@ -40,7 +40,6 @@ namespace Postomate.Tests
             var getResponse = await api.SendAsync(getRequest.ToHttpRequestMessage());
             getResponse.StatusCode.Should().Be(StatusCodes.Status200OK, "this should work ;)");
             var getResponseContent = await getResponse.Content.ReadAsStringAsync();
-
             getResponseContent.Should().Be("[]", "in the beginning, there are no persons");
 
 
