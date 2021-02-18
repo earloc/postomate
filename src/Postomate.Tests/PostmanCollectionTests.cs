@@ -30,6 +30,33 @@ namespace Postomate.Tests
 
 
         [Theory]
+        [InlineData("GetAllPersons")]
+        [InlineData("PostPerson")]
+        public void Finds_a_Request_WHen_Searching_Recursive_From_Root(string requestName)
+        {
+
+            var folder = sut.FindFolder("NonExistingFolder");
+            var request = folder.FindRaw(requestName, new VariableContext(requiresFullSubstitution: false));
+
+            request.Should().NotBeNull("when a folder is not found, a recursive search is performed from the collection-root, which should find the required request");
+        }
+
+        [Theory]
+        [InlineData("GetAllPersons", "Get.*Persons")]
+        [InlineData("PostPerson", "^.*Person$")]
+        public void Finds_a_Request_ByRegex(string requestName, string regex)
+        {
+
+            var folder = sut.FindFolder("NonExistingFolder");
+            var request = folder.FindRaw(new Regex(regex), new VariableContext(requiresFullSubstitution: false));
+
+            request.Should().NotBeNull("searching by a regex should discover a request");
+
+            request.Name.Should().Be(requestName, "that should be the first request matching the specified regex");
+        }
+
+
+        [Theory]
         [InlineData("Tests", "PostPerson")]
         public void Finding_A_Post_JsonRequest_Substitutes_Variables(string folderName, string requestName)
         {

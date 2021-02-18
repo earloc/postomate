@@ -17,7 +17,9 @@ namespace Postomate
             RequiresFullSubstitution = requiresFullSubstitution;
         }
 
-        public IEnumerable<KeyValuePair<string, string>> Variables { get; private set; } = Enumerable.Empty<KeyValuePair<string, string>>();
+
+        public IDictionary<string, string> Variables { get; private set; } = new Dictionary<string, string>();
+
         public bool RequiresFullSubstitution { get; }
 
         public VariableContext Enrich(object context)
