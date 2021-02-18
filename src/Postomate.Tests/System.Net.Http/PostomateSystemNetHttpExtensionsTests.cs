@@ -31,8 +31,26 @@ namespace Postomate.Tests.System.Net.Http
             
             var requestMessage = postmanRequest.ToHttpRequestMessage();
 
-            requestMessage.Method.Method.Should().Be(httpMethod);
+            requestMessage.Method.Method.Should().Be(httpMethod, "the http-verb defined in the postman-request should be used");
+        }
+
+        [Theory]
+        [InlineData("text/plain")]
+        [InlineData("application/javascript")]
+        [InlineData("application/json")]
+        [InlineData("text/html")]
+        [InlineData("application/xml")]
+        public void Extension_Uses_ContentType_FromPostman(string contentType)
+        {
+            var postmanRequest = folder.FindRaw(contentType);
+
+            var requestMessage = postmanRequest.ToHttpRequestMessage();
+
+            requestMessage.Content.Should().NotBeNull("otherwise, the next assertion would not make any sense at all");
+            requestMessage.Content?.Headers.ContentType.Should().NotBeNull("otherwise, the next assertion would not make any sense at all, either");
+            requestMessage.Content?.Headers.ContentType?.MediaType.Should().Be(contentType, "the content-type defined in the postman-request should be used");
 
         }
     }
 }
+
