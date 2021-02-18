@@ -19,13 +19,17 @@ namespace Postomate
 
         private readonly Action<string> log;
 
-        protected PostmanRequestBase(JsonElement element, VariableContext context, Action<string> log)
+        protected PostmanRequestBase(JsonElement element, VariableContext? context = null, Action<string>? log = null)
         {
             this.log = log;
             RawContent = element.ToString() ?? "";
             EnrichedContent = RawContent;
 
-            foreach(var variable in context.Variables)
+
+
+            context ??= new VariableContext();
+
+            foreach (var variable in context.Variables)
             {
                 var oldValue = $"{{{{{variable.Key}}}}}";
                 var newValue = variable.Value;
