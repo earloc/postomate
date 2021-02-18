@@ -7,7 +7,7 @@ namespace Postomate
 {
     public class PostmanRawRequest: PostmanRequestBase
     {
-        public PostmanRawRequest(JsonElement element, VariableContext? context, Action<string> log) : base(element, context, log)
+        public PostmanRawRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
         {
             Name = enrichedElement.TryGetProperty("name")?.GetString() ?? "";
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Postomate
 {
-    public class VariableContext
+    public class VariableContext : IVariableContext
     {
         public VariableContext(object? context = null, bool requiresFullSubstitution = false)
         {
@@ -16,7 +16,6 @@ namespace Postomate
             }
             RequiresFullSubstitution = requiresFullSubstitution;
         }
-
 
         public IDictionary<string, string> Variables { get; private set; } = new Dictionary<string, string>();
 

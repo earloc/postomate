@@ -19,7 +19,7 @@ namespace Postomate
 
         private readonly Action<string> log;
 
-        protected PostmanRequestBase(JsonElement element, VariableContext? context = null, Action<string>? log = null)
+        protected PostmanRequestBase(JsonElement element, IVariableContext? context = null, Action<string>? log = null)
         {
             this.log = new Action<string>(message => log?.Invoke(message));
 
