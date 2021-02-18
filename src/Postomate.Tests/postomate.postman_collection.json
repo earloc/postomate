@@ -41,7 +41,19 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/person?firstName={{firstName}}&surname={{surname}}",
 							"host": [
