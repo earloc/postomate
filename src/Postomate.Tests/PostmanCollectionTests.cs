@@ -28,11 +28,10 @@ namespace Postomate.Tests
             });
         }
 
-
         [Theory]
         [InlineData("GetAllPersons")]
         [InlineData("PostPerson")]
-        public void Finds_a_Request_WHen_Searching_Recursive_From_Root(string requestName)
+        public void Finds_a_Request_When_Searching_Recursive_From_Root(string requestName)
         {
 
             var folder = sut.FindFolder("NonExistingFolder");
@@ -111,5 +110,33 @@ namespace Postomate.Tests
                 .NotThrow<UnsubstitutedVariablesException>()
             ;
         }
+
+        [Theory]
+        [InlineData("NonExistingRequest")]
+        public void Throws_When_Request_Not_Found_ByName(string requestName)
+        {
+            var folder = sut.FindFolder("NonExistingFolder");
+
+            folder.Invoking(_ => _.FindRaw(requestName, new VariableContext()))
+                .Should()
+                .Throw<RequestNotFoundException>()
+                .WithMessage($"Could not find request named '{requestName}' in folder 'root'");
+            ;
+        }
+
+        [Theory]
+        [InlineData("NonExisting.*")]
+        public void Throws_When_Request_Not_Found_ByRegex(string requestName)
+        {
+            var folder = sut.FindFolder("NonExistingFolder");
+
+            folder.Invoking(_ => _.FindRaw(new Regex(requestName), new VariableContext()))
+                .Should()
+                .Throw<RequestNotFoundException>()
+                .WithMessage($"Could not find request matching '{requestName}' in folder 'root'");
+            ;
+        }
+
+
     }
 }

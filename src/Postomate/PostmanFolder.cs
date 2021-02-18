@@ -22,7 +22,7 @@ namespace Postomate
             var request = collection.FindItemRecursive(element, _ => regex.IsMatch(_));
             if (!request.HasValue)
             {
-                throw new Exception($"Could not find request matching '{regex}' in folder '{name}'");
+                throw new RequestNotFoundException($"Could not find request matching '{regex}' in folder '{name}'");
             }
             return request.Value;
         }
@@ -32,7 +32,7 @@ namespace Postomate
             var request = collection.FindItemRecursive(element, _ => _.Contains(name));
             if (!request.HasValue)
             {
-                throw new Exception($"Could not find request named '{name}' in folder '{this.name}'");
+                throw new RequestNotFoundException($"Could not find request named '{name}' in folder '{this.name}'");
             }
 
             return request.Value;
