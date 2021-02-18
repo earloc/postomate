@@ -6,7 +6,7 @@ namespace Postomate
 {
     public class PostmanGrapqhQlRequest : PostmanRequestBase
     {
-        public PostmanGrapqhQlRequest(JsonElement element, VariableContext context, Action<string> log) : base(element, context, log)
+        public PostmanGrapqhQlRequest(JsonElement element, VariableContext? context, Action<string> log) : base(element, context, log)
         {
             var request = enrichedElement.RequireProperty("request");
             var graphql = request.RequireProperty("body").RequireProperty("graphql");
