@@ -38,22 +38,22 @@ namespace Postomate
             return request.Value;
         }
 
-        public PostmanGrapqhQlRequest FindGrapqhQl(Regex regex, VariableContext context)
-            => new PostmanGrapqhQlRequest(FindBy(regex), context, collection.Log);
+        //public PostmanGrapqhQlRequest FindGrapqhQl(Regex regex, IVariableContext? context = null)
+        //    => new PostmanGrapqhQlRequest(FindBy(regex), context, collection.Log);
 
-        public PostmanGrapqhQlRequest FindGrapqhQl(string name, VariableContext context)
-            => new PostmanGrapqhQlRequest(FindBy(name), context, collection.Log);
+        //public PostmanGrapqhQlRequest FindGrapqhQl(string name, IVariableContext? context = null)
+        //    => new PostmanGrapqhQlRequest(FindBy(name), context, collection.Log);
 
-        public PostmanRawRequest FindRaw(Regex regex, VariableContext context) 
+        public PostmanRawRequest FindRaw(Regex regex, IVariableContext? context = null) 
             => new PostmanRawRequest(FindBy(regex), context, collection.Log);
 
-        public PostmanRawRequest FindRaw(string name, VariableContext context) 
+        public PostmanRawRequest FindRaw(string name, IVariableContext? context = null) 
             => new PostmanRawRequest(FindBy(name), context, collection.Log);
 
-        public PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, VariableContext context)
-            => new PostmanFormUrlEncodedRequest(FindBy(regex), context, collection.Log);
+        //public PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, IVariableContext? context = null)
+        //    => new PostmanFormUrlEncodedRequest(FindBy(regex), context, collection.Log);
 
-        public PostmanFormUrlEncodedRequest FindFormUrlEncoded(string name, VariableContext context)
-            => new PostmanFormUrlEncodedRequest(FindBy(name), context, collection.Log);
+        //public PostmanFormUrlEncodedRequest FindFormUrlEncoded(string name, IVariableContext? context = null)
+        //    => new PostmanFormUrlEncodedRequest(FindBy(name), context, collection.Log);
     }
 }

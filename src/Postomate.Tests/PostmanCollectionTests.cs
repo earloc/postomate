@@ -16,14 +16,15 @@ namespace Postomate.Tests
 
         private readonly PostmanCollection sut;
         private readonly HttpClient api;
-        private readonly VariableContext variables;
+        private readonly MutableVariableContext variables;
 
         public PostmanCollectionTests(ApiFixture fixture, ITestOutputHelper output)
         {
-            sut = PostmanCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
+
+            sut = fixture.PostmanCollection(output);
             api = fixture.Api;
 
-            variables = new VariableContext(new { 
+            variables = new MutableVariableContext(new { 
                 baseUrl = api.BaseAddress?.ToString().Trim('/') ?? "http://localhost:5042"
             });
         }
@@ -35,7 +36,7 @@ namespace Postomate.Tests
         {
 
             var folder = sut.FindFolder("NonExistingFolder");
-            var request = folder.FindRaw(requestName, new VariableContext(requiresFullSubstitution: false));
+            var request = folder.FindRaw(requestName, new MutableVariableContext(requiresFullSubstitution: false));
 
             request.Should().NotBeNull("when a folder is not found, a recursive search is performed from the collection-root, which should find the required request");
         }
@@ -47,7 +48,7 @@ namespace Postomate.Tests
         {
 
             var folder = sut.FindFolder("NonExistingFolder");
-            var request = folder.FindRaw(new Regex(regex), new VariableContext(requiresFullSubstitution: false));
+            var request = folder.FindRaw(new Regex(regex), new MutableVariableContext(requiresFullSubstitution: false));
 
             request.Should().NotBeNull("searching by a regex should discover a request");
 
@@ -57,7 +58,7 @@ namespace Postomate.Tests
 
         [Theory]
         [InlineData("Tests", "PostPerson")]
-        public void Finding_A_Post_JsonRequest_Substitutes_Variables(string folderName, string requestName)
+        public void Finding_A_Post_RawRequest_Substitutes_Variables(string folderName, string requestName)
         {
             variables.Enrich(new
             {
@@ -85,11 +86,11 @@ namespace Postomate.Tests
 
         [Theory]
         [InlineData("Tests", "PostPerson")]
-        public void Finding_A_Post_JsonRequest_Optionally_Ensures_That_No_Unsubstituted_Variables_Are_Left(string folderName, string requestName)
+        public void Finding_A_Post_RawRequest_Optionally_Ensures_That_No_Unsubstituted_Variables_Are_Left(string folderName, string requestName)
         {
             var folder = sut.FindFolder(folderName);
 
-            folder.Invoking(_ => _.FindRaw(requestName, new VariableContext(requiresFullSubstitution: true)))
+            folder.Invoking(_ => _.FindRaw(requestName, new MutableVariableContext(requiresFullSubstitution: true)))
                 .Should()
                 .Throw<UnsubstitutedVariablesException>()
                 .Which.Variables
@@ -101,11 +102,11 @@ namespace Postomate.Tests
 
         [Theory]
         [InlineData("Tests", "PostPerson")]
-        public void Finding_A_Post_JsonRequest_Optionally_Can_Contain_Unsubstituted_Varaibles(string folderName, string requestName)
+        public void Finding_A_Post_RawRequest_Optionally_Can_Contain_Unsubstituted_Varaibles(string folderName, string requestName)
         {
             var folder = sut.FindFolder(folderName);
 
-            folder.Invoking(_ => _.FindRaw(requestName, new VariableContext(requiresFullSubstitution: false)))
+            folder.Invoking(_ => _.FindRaw(requestName, new MutableVariableContext(requiresFullSubstitution: false)))
                 .Should()
                 .NotThrow<UnsubstitutedVariablesException>()
             ;
@@ -117,10 +118,10 @@ namespace Postomate.Tests
         {
             var folder = sut.FindFolder("NonExistingFolder");
 
-            folder.Invoking(_ => _.FindRaw(requestName, new VariableContext()))
+            folder.Invoking(_ => _.FindRaw(requestName, new MutableVariableContext()))
                 .Should()
                 .Throw<RequestNotFoundException>()
-                .WithMessage($"Could not find request named '{requestName}' in folder 'root'");
+                .WithMessage($"Could not find request named '{requestName}' in folder 'root'")
             ;
         }
 
@@ -130,13 +131,11 @@ namespace Postomate.Tests
         {
             var folder = sut.FindFolder("NonExistingFolder");
 
-            folder.Invoking(_ => _.FindRaw(new Regex(requestName), new VariableContext()))
+            folder.Invoking(_ => _.FindRaw(new Regex(requestName), new MutableVariableContext()))
                 .Should()
                 .Throw<RequestNotFoundException>()
-                .WithMessage($"Could not find request matching '{requestName}' in folder 'root'");
+                .WithMessage($"Could not find request matching '{requestName}' in folder 'root'")
             ;
         }
-
-
     }
 }
