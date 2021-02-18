@@ -25,16 +25,16 @@ namespace Postomate
 
             contentType = postmanRequest.InferredContentType;
 
-            //foreach (var header in postmanRequest.Headers)
-            //{
-            //    if (header.Key == "Content-Type")
-            //    {
-            //        contentType ??= header.Value;
-            //        break;
-            //    }
-                
-            //    //requestMessage.Headers.Add(header.Key, header.Value);
-            //}
+            foreach (var header in postmanRequest.Headers)
+            {
+                if (header.Key == "Content-Type")
+                {
+                    contentType = header.Value;
+                    break;
+                }
+
+                //requestmessage.headers.add(header.key, header.value);
+            }
 
             requestMessage.Content = new StringContent(postmanRequest.Body, encoding, contentType);
 
