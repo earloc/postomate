@@ -23,13 +23,14 @@ namespace Postomate.Tests
             api = fixture.Api;
 
             variables = new VariableContext(new { 
-                baseUrl = "http://localhost:5042"
+                baseUrl = api.BaseAddress?.ToString().Trim('/') ?? "http://localhost:5042"
             });
         }
 
 
-        [Fact]
-        public async Task Finding_A_Request_Substitutes_Variables()
+        [Theory]
+        [InlineData("Tests", "PostPerson")]
+        public async Task Finding_A_Request_Substitutes_Variables(string folderName, string requestName)
         {
             variables.Enrich(new
             {
@@ -37,8 +38,8 @@ namespace Postomate.Tests
                 surname = "Beeblebrox"
             });
 
-            var folder = sut.FindFolder("Tests");
-            var request = folder.FindJson("PostPerson", variables);
+            var folder = sut.FindFolder(folderName);
+            var request = folder.FindJson(requestName, variables);
 
             request.EnrichedContent.Should().NotBe(request.RawContent, "we expect the two to be unequal");
             request.Url.Should().Contain("Zaphod");
