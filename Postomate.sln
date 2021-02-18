@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate", "src\Postomate\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Tests", "src\Postomate.Tests\Postomate.Tests.csproj", "{B6A7755A-9E37-4A6C-AD39-5E13E0F5397D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postomate.Tests.Api", "src\Postomate.Tests.Api\Postomate.Tests.Api.csproj", "{F543F73E-257D-4CD3-B875-F58AD71C649E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Tests.Api", "src\Postomate.Tests.Api\Postomate.Tests.Api.csproj", "{F543F73E-257D-4CD3-B875-F58AD71C649E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postomate.System.Net.Http", "src\Postomate.System.Net.Http\Postomate.System.Net.Http.csproj", "{8578530A-5573-46D5-98C5-B36B7C31A6FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.Net.Http", "System.Net.Http", "{C8752BB8-B5BF-4D44-BBD4-50AC59415061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{F543F73E-257D-4CD3-B875-F58AD71C649E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F543F73E-257D-4CD3-B875-F58AD71C649E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F543F73E-257D-4CD3-B875-F58AD71C649E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8578530A-5573-46D5-98C5-B36B7C31A6FA} = {C8752BB8-B5BF-4D44-BBD4-50AC59415061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFFB83A9-76E0-43BC-963D-0C63B3FA0FEB}

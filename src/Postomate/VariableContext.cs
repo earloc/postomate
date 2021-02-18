@@ -24,7 +24,7 @@ namespace Postomate
 
         public VariableContext Enrich(object context)
         {
-            var moreVariables = new Dictionary<string, string>(Variables.ToArray());
+            var moreVariables = new Dictionary<string, string>(Variables);
 
             foreach (var property in context.GetType().GetProperties())
             {
