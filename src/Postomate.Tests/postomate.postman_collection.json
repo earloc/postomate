@@ -254,6 +254,181 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "text/plain",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "hello world",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "application/javascript",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "alert(\"hello world\";",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "application/json",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hello\":\"world\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "text/html",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<html>\r\n    <body>\r\n        <h1>hello</h1>\r\n        <h2>world</h2>\r\n    </body>\r\n</html>",
+							"options": {
+								"raw": {
+									"language": "html"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "application/xml",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<hello>\r\n    <world></world>\r\n</hello>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

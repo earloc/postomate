@@ -23,18 +23,20 @@ namespace Postomate
 
             var requestMessage = new HttpRequestMessage(postmanRequest.Method, postmanRequest.Url);
 
+            contentType = postmanRequest.InferredContentType;
+
             //foreach (var header in postmanRequest.Headers)
             //{
             //    if (header.Key == "Content-Type")
             //    {
             //        contentType ??= header.Value;
-            //        continue;
+            //        break;
             //    }
-
-            //    requestMessage.Headers.Add(header.Key, header.Value);
+                
+            //    //requestMessage.Headers.Add(header.Key, header.Value);
             //}
 
-            //requestMessage.Content = new StringContent(postmanRequest.Body, encoding, contentType);
+            requestMessage.Content = new StringContent(postmanRequest.Body, encoding, contentType);
 
             return requestMessage;
         }
