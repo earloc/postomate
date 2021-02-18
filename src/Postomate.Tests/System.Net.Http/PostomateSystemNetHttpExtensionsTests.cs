@@ -67,6 +67,17 @@ namespace Postomate.Tests.System.Net.Http
                 .BeEquivalentTo(new[] { headerValue }, "this header-value should be mapped from the postman-request onto the request-message")
             ;
         }
+
+        [Theory]
+        [InlineData("CustomHeaders", "X-POSTOMATE-DISABLED")]
+        public void Extension_Respects_Disabled_CustomHeaders(string requestName, string headerName)
+        {
+            var postmanRequest = folder.FindRaw(requestName);
+
+            var requestMessage = postmanRequest.ToHttpRequestMessage();
+
+            requestMessage.Headers.Contains(headerName).Should().BeFalse($"the header '{headerName}' is disabled, which should reflect in the request-message");
+        }
     }
 }
 

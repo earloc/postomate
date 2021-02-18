@@ -66,7 +66,7 @@ namespace Postomate
                     var key = header.RequireProperty("key").GetString();
                     var value = header.RequireProperty("value").GetString();
 
-                    //some postman-headers may be disabled
+                    //some postman-headers may be disabled -> ignore them
                     if (header.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())
                     {
                         continue;
