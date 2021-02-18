@@ -19,8 +19,6 @@ namespace Postomate
         /// <returns></returns>
         public static HttpRequestMessage ToHttpRequestMessage(this PostmanRawRequest postmanRequest, string? contentType = null, Encoding? encoding = null)
         {
-            //encoding ??= Encoding.UTF8;
-
             var requestMessage = new HttpRequestMessage(postmanRequest.Method, postmanRequest.Url);
 
             contentType = postmanRequest.InferredContentType;
