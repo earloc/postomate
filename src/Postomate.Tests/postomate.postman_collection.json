@@ -469,6 +469,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "CustomHeaders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<html>\r\n    <body>\r\n        <h1>hello</h1>\r\n        <h2>world</h2>\r\n    </body>\r\n</html>",
+							"options": {
+								"raw": {
+									"language": "html"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

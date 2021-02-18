@@ -31,7 +31,7 @@ namespace Postomate
                     break;
                 }
 
-                //requestmessage.headers.add(header.key, header.value);
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
 
             requestMessage.Content = new StringContent(postmanRequest.Body, encoding, contentType);

@@ -50,7 +50,22 @@ namespace Postomate.Tests.System.Net.Http
             requestMessage.Content.Should().NotBeNull("otherwise, the next assertion would not make any sense at all");
             requestMessage.Content?.Headers.ContentType.Should().NotBeNull("otherwise, the next assertion would not make any sense at all, either");
             requestMessage.Content?.Headers.ContentType?.MediaType.Should().Be(contentType, "the content-type defined in the postman-request should be used");
+        }
 
+        [Theory]
+        [InlineData("CustomHeaders", "X-POSTOMATE-SAMPLE", "SomeValue")]
+        public void Extension_Respects_CustomHeaders(string requestName, string headerName, string headerValue)
+        {
+            var postmanRequest = folder.FindRaw(requestName);
+
+            var requestMessage = postmanRequest.ToHttpRequestMessage();
+
+            requestMessage.Headers.Contains(headerName).Should().BeTrue("this header should be mapped from the postman-request onto the request-message");
+
+            requestMessage.Headers.GetValues(headerName)
+                .Should()
+                .BeEquivalentTo(new[] { headerValue }, "this header-value should be mapped from the postman-request onto the request-message")
+            ;
         }
     }
 }
