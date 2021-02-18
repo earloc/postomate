@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.TestHost;
 using Postomate.Tests.Api;
 using System.Net.Http;
+using Xunit.Abstractions;
 
 namespace Postomate.Tests
 {
@@ -15,5 +16,7 @@ namespace Postomate.Tests
             Api = server.CreateClient();
         }
         public HttpClient Api { get; }
+
+        public PostmanCollection PostmanCollection(ITestOutputHelper output) => Postomate.PostmanCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
     }
 }

@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\README.md" Link="README.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="5.0.1" />
+    <ProjectReference Include="..\Postomate\Postomate.csproj" />
   </ItemGroup>
 
 </Project>

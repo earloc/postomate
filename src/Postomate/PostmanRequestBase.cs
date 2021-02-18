@@ -37,8 +37,8 @@ namespace Postomate
             {
                 var unsubstitutedVariables = new Regex("{{[a-zA-Z0-9_-]*}}");
 
-                var matches = unsubstitutedVariables.Matches(EnrichedContent);
-
+                var matches = unsubstitutedVariables.Matches(EnrichedContent).OfType<Match>();
+                
                 if (matches.Any())
                 {
                     throw new UnsubstitutedVariablesException(matches.Select(x => x.Value).Distinct());
