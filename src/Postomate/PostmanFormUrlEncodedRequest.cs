@@ -11,16 +11,16 @@ namespace Postomate
     {
         public PostmanFormUrlEncodedRequest(JsonElement element, VariableContext context, Action<string> log) : base(element, context, log)
         {
-            var request = enrichedElement.GetProperty("request");
+            var request = enrichedElement.RequireProperty("request");
 
             Items = request
-                .GetProperty("body")
-                .GetProperty("urlencoded")
+                .RequireProperty("body")
+                .RequireProperty("urlencoded")
                 .EnumerateArray()
                 .Select(x => 
                     new KeyValuePair<string?, string?>(
-                            x.GetProperty("key").GetString(), 
-                            x.GetProperty("value").GetString()
+                            x.RequireProperty("key").GetString(), 
+                            x.RequireProperty("value").GetString()
                     )
                 )
                 .ToArray();

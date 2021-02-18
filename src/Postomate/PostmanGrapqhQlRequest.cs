@@ -8,11 +8,11 @@ namespace Postomate
     {
         public PostmanGrapqhQlRequest(JsonElement element, VariableContext context, Action<string> log) : base(element, context, log)
         {
-            var request = enrichedElement.GetProperty("request");
-            var graphql = request.GetProperty("body").GetProperty("graphql");
+            var request = enrichedElement.RequireProperty("request");
+            var graphql = request.RequireProperty("body").RequireProperty("graphql");
 
-            Query = graphql.GetProperty("query").GetString() ?? "";
-            Variables = graphql.GetProperty("variables").GetString() ?? "";
+            Query = graphql.RequireProperty("query").GetString() ?? "";
+            Variables = graphql.RequireProperty("variables").GetString() ?? "";
         }
 
         public string Query { get; }

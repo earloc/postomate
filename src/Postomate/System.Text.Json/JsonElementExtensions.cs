@@ -19,5 +19,14 @@ namespace System.Text.Json
             return default;
         }
 
+        public static JsonElement RequireProperty(this JsonElement that, string name)
+        {
+            if (that.TryGetProperty(name, out var property))
+            {
+                return property;
+            }
+            throw new KeyNotFoundException($"The property '{name}' was not found on the specified JsonElement");
+        }
+
     }
 }

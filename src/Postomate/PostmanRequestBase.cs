@@ -47,31 +47,39 @@ namespace Postomate
 
             this.enrichedElement = JsonDocument.Parse(EnrichedContent).RootElement;
 
-            var request = enrichedElement.GetProperty("request");
-            Url = request.GetProperty("url").GetProperty("raw").GetString() ?? "";
-            Method = new HttpMethod(request.GetProperty("method").GetString() ?? "");
+            var request = enrichedElement.RequireProperty("request");
 
-            var headers = request.GetProperty("header");
 
-            foreach (var header in headers.EnumerateArray())
+            Url = request.RequireProperty("url").RequireProperty("raw").GetString() ?? throw new InvalidOperationException("Url must not be null or empty");
+            Method = new HttpMethod(request.RequireProperty("method").GetString() ?? throw new InvalidOperationException("Method must not be null or empty"));
+
+            var headers = request.TryGetProperty("header");
+
+
+            if (headers is not null)
             {
-                var key = header.GetProperty("key").GetString();
-                var value = header.GetProperty("value").GetString();
-
-                //some postman-headers may be disabled
-                if (header.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())
+                foreach (var header in headers?.EnumerateArray()!)
                 {
-                    continue;
-                }
+                    var key = header.RequireProperty("key").GetString();
+                    var value = header.RequireProperty("value").GetString();
 
-                Headers.Add(key ?? "", value ?? "");
+                    //some postman-headers may be disabled
+                    if (header.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())
+                    {
+                        continue;
+                    }
+
+                    Headers.Add(key ?? "", value ?? "");
+                }
             }
 
-            if (request.TryGetProperty("auth", out var authProperty))
+            
+
+            if ((request.TryGetProperty("auth", out var authProperty)))
             {
                 //just supporting bearer atm
-                var tokenElement = authProperty.GetProperty("bearer").EnumerateArray().FirstOrDefault(x => x.TryGetProperty("value", out var value));
-                var token = tokenElement.GetProperty("value").GetString();
+                var tokenElement = authProperty.RequireProperty("bearer").EnumerateArray().FirstOrDefault(x => x.TryGetProperty("value", out var value));
+                var token = tokenElement.RequireProperty("value").GetString();
 
                 Authorization = new AuthenticationHeaderValue("Bearer", token);
             }
