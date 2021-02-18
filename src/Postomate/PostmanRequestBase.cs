@@ -26,7 +26,7 @@ namespace Postomate
             RawContent = element.ToString() ?? "";
             EnrichedContent = RawContent;
 
-            context ??= new VariableContext();
+            context ??= new MutableVariableContext();
 
             foreach (var variable in context.Variables)
             {

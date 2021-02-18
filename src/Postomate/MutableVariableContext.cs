@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Postomate
 {
-    public class VariableContext : IVariableContext
+    public class MutableVariableContext : IVariableContext
     {
-        public VariableContext(object? context = null, bool requiresFullSubstitution = false)
+        public MutableVariableContext(object? context = null, bool requiresFullSubstitution = false)
         {
             if (context is not null)
             {
@@ -21,7 +21,7 @@ namespace Postomate
 
         public bool RequiresFullSubstitution { get; }
 
-        public VariableContext Enrich(object context)
+        public MutableVariableContext Enrich(object context)
         {
             var moreVariables = new Dictionary<string, string>(Variables);
 

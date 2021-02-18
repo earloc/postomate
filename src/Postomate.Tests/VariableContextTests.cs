@@ -13,11 +13,11 @@ namespace Postomate.Tests
         [Fact]
         public void Replaces_NullValues_With_EmptyString()
         {
-            var sut = new VariableContext(new
+            var sut = new MutableVariableContext(new
             {
                 NullString = default(string?),
                 NullObject = default(object),
-                NullVariableContext = default(VariableContext)
+                NullVariableContext = default(MutableVariableContext)
             });
 
             sut.Variables["NullString"].Should().BeEmpty("a null-string should be treated as an empty string");
