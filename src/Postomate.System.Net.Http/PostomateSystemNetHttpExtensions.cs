@@ -17,7 +17,7 @@ namespace Postomate
         /// <param name="contentType">The override content-type. Defaults to the <see cref="PostmanRawRequest"/> Content-Type, if specified</param>
         /// <param name="encoding">Defaults to <see cref="Encoding.UTF8"/>, when null</param>
         /// <returns></returns>
-        public static HttpRequestMessage ToRequestMessage(this PostmanRawRequest postmanRequest, string? contentType = null, Encoding? encoding = null)
+        public static HttpRequestMessage ToHttpRequestMessage(this PostmanRawRequest postmanRequest, string? contentType = null, Encoding? encoding = null)
         {
             //encoding ??= Encoding.UTF8;
 

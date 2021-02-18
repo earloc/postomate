@@ -32,8 +32,8 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"//pm.variables.set(\"firstName\", \"Arthur\")\r",
-									"//pm.variables.set(\"lastName\", \"Dent\")"
+									"pm.variables.set(\"firstName\", \"Arthur\")\r",
+									"pm.variables.set(\"lastName\", \"Dent\")"
 								],
 								"type": "text/javascript"
 							}
@@ -81,7 +81,7 @@
 					},
 					"response": [
 						{
-							"name": "PostPerson",
+							"name": "Arthur Dent",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -179,6 +179,81 @@
 							"body": "{\n    \"id\": \"32160bf6-f682-4d9f-9b36-116ab4496eb4\",\n    \"firstName\": \"Zaphod\",\n    \"surname\": \"Beeblebrox\",\n    \"createdAt\": \"2021-02-16T22:50:01.7196163+01:00\"\n}"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "System.Net.Http",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
