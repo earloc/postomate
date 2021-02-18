@@ -1,14 +1,11 @@
 name: postomate
 
 on:
-  push:
-    branches: [feature/*]
-  
   pull_request:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  pr-build-and-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
