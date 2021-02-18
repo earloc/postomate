@@ -6,5 +6,7 @@ namespace Postomate
     {
         bool RequiresFullSubstitution { get; }
         IDictionary<string, string> Variables { get; }
+
+        IVariableContext Enrich(object context);
     }
 }
