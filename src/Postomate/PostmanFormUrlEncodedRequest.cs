@@ -9,7 +9,7 @@ namespace Postomate
 {
     public class PostmanFormUrlEncodedRequest : PostmanRequestBase
     {
-        public PostmanFormUrlEncodedRequest(JsonElement element, VariableContext? context = null, Action<string>? log = null) : base(element, context, log)
+        public PostmanFormUrlEncodedRequest(JsonElement element, VariableContext? context, Action<string> log) : base(element, context, log)
         {
             var request = enrichedElement.RequireProperty("request");
 

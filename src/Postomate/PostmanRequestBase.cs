@@ -21,11 +21,10 @@ namespace Postomate
 
         protected PostmanRequestBase(JsonElement element, VariableContext? context = null, Action<string>? log = null)
         {
-            this.log = log;
+            this.log = new Action<string>(message => log?.Invoke(message));
+
             RawContent = element.ToString() ?? "";
             EnrichedContent = RawContent;
-
-
 
             context ??= new VariableContext();
 
