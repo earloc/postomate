@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace Postomate
 {
@@ -30,6 +31,18 @@ namespace Postomate
                 var newValue = variable.Value;
 
                 EnrichedContent = EnrichedContent.Replace(oldValue, newValue);
+            }
+
+            if (context.RequiresFullSubstitution)
+            {
+                var unsubstitutedVariables = new Regex("{{[a-zA-Z0-9_-]*}}");
+
+                var matches = unsubstitutedVariables.Matches(EnrichedContent);
+
+                if (matches.Any())
+                {
+                    throw new UnsubstitutedVariablesException(matches.Select(x => x.Value).Distinct());
+                }
             }
 
             this.enrichedElement = JsonDocument.Parse(EnrichedContent).RootElement;

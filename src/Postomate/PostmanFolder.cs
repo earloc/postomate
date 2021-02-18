@@ -34,10 +34,11 @@ namespace Postomate
             {
                 throw new Exception($"Could not find request named '{name}' in folder '{this.name}'");
             }
+
             return request.Value;
         }
 
-        public PostmanGrapqhQlRequest FindGrapqhQl(Regex regex, VariableContext context) 
+        public PostmanGrapqhQlRequest FindGrapqhQl(Regex regex, VariableContext context)
             => new PostmanGrapqhQlRequest(FindBy(regex), context, collection.Log);
 
         public PostmanGrapqhQlRequest FindGrapqhQl(string name, VariableContext context)

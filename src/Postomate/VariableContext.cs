@@ -8,15 +8,17 @@ namespace Postomate
 {
     public class VariableContext
     {
-        public VariableContext(object? context = null)
+        public VariableContext(object? context = null, bool requiresFullSubstitution = false)
         {
             if (context is not null)
             {
                 Enrich(context);
             }
+            RequiresFullSubstitution = requiresFullSubstitution;
         }
 
         public IEnumerable<KeyValuePair<string, string>> Variables { get; private set; } = Enumerable.Empty<KeyValuePair<string, string>>();
+        public bool RequiresFullSubstitution { get; }
 
         public VariableContext Enrich(object context)
         {
