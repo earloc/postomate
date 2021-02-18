@@ -40,6 +40,7 @@ namespace Postomate.Tests.System.Net.Http
         [InlineData("application/json")]
         [InlineData("text/html")]
         [InlineData("application/xml")]
+        [InlineData("custom/contentType")]
         public void Extension_Uses_ContentType_FromPostman(string contentType)
         {
             var postmanRequest = folder.FindRaw(contentType);

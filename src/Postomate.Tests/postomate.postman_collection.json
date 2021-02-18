@@ -429,6 +429,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "custom/contentType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-POSTOMATE-SAMPLE",
+								"value": "SomeValue",
+								"type": "text"
+							},
+							{
+								"key": "X-POSTOMATE-DISABLED",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "custom/contentType",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<hello>\r\n    <world></world>\r\n</hello>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
