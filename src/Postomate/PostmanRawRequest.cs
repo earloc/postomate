@@ -16,10 +16,6 @@ namespace Postomate
         }
         public string Body { get; }
 
-        //todo: read from postman-request
-        public string MediaType { get; protected set; } = "application/xml";
         public string Name { get; }
-
-        protected override HttpContent CreateContent() => new StringContent(Body, Encoding.Default, MediaType);
     }
 }

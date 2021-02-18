@@ -50,12 +50,6 @@ namespace Postomate
         public PostmanRawRequest FindRaw(string name, VariableContext context) 
             => new PostmanRawRequest(FindBy(name), context, collection.Log);
 
-        public PostmanRawRequest FindJson(string name, VariableContext context)
-            => new PostmanJsonRequest(FindBy(name), context, collection.Log);
-
-        public PostmanRawRequest FindJson(Regex regex, VariableContext context)
-            => new PostmanJsonRequest(FindBy(regex), context, collection.Log);
-
         public PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, VariableContext context)
             => new PostmanFormUrlEncodedRequest(FindBy(regex), context, collection.Log);
 

@@ -18,12 +18,12 @@ namespace Postomate
         public string Query { get; }
         public string Variables { get; }
 
-        protected override HttpContent CreateContent()
-        {
-            return new StringContent(@$"{{ 
-                ""query"" = ""{Query}"",
-                ""variables"" = {Variables}
-            }}");
-        }
+        //protected override HttpContent CreateContent()
+        //{
+        //    return new StringContent(@$"{{ 
+        //        ""query"" = ""{Query}"",
+        //        ""variables"" = {Variables}
+        //    }}");
+        //}
     }
 }

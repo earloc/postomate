@@ -85,26 +85,5 @@ namespace Postomate
 
         public IDictionary<string, string> Headers { get; } = new Dictionary<string, string>();
 
-        public HttpRequestMessage CreateRequestMessage()
-        {
-            var requestMessage = new HttpRequestMessage(Method, Url);
-
-            foreach (var header in Headers)
-            {
-
-                if (header.Key == "Content-Type")
-                {
-                    continue;
-                }
-
-                requestMessage.Headers.Add(header.Key, header.Value);
-            }
-
-            requestMessage.Content = CreateContent();
-
-            return requestMessage;
-        }
-
-        protected abstract HttpContent CreateContent();
     }
 }

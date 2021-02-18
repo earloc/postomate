@@ -26,7 +26,5 @@ namespace Postomate
                 .ToArray();
         }
         public IEnumerable<KeyValuePair<string?, string?>> Items { get; }
-
-        protected override HttpContent CreateContent() => new FormUrlEncodedContent(Items);
     }
 }

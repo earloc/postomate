@@ -66,7 +66,7 @@ namespace Postomate.Tests
             });
 
             var folder = sut.FindFolder(folderName);
-            var request = folder.FindJson(requestName, variables);
+            var request = folder.FindRaw(requestName, variables);
 
             request.EnrichedContent.Should().NotBe(request.RawContent, "we expect them to be unequal");
             request.Url.Should().Contain("Zaphod");
@@ -89,7 +89,7 @@ namespace Postomate.Tests
         {
             var folder = sut.FindFolder(folderName);
 
-            folder.Invoking(_ => _.FindJson(requestName, new VariableContext(requiresFullSubstitution: true)))
+            folder.Invoking(_ => _.FindRaw(requestName, new VariableContext(requiresFullSubstitution: true)))
                 .Should()
                 .Throw<UnsubstitutedVariablesException>()
                 .Which.Variables
@@ -105,7 +105,7 @@ namespace Postomate.Tests
         {
             var folder = sut.FindFolder(folderName);
 
-            folder.Invoking(_ => _.FindJson(requestName, new VariableContext(requiresFullSubstitution: false)))
+            folder.Invoking(_ => _.FindRaw(requestName, new VariableContext(requiresFullSubstitution: false)))
                 .Should()
                 .NotThrow<UnsubstitutedVariablesException>()
             ;
