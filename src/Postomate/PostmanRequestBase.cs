@@ -92,7 +92,7 @@ namespace Postomate
                 headers.Add(key ?? "", value ?? "");
             }
 
-            return headers
+            return headers;
         }
 
         private AuthenticationHeaderValue? AdoptAuthorization(JsonElement request)
