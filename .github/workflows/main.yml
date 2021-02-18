@@ -1,13 +1,11 @@
 name: postomate
 
-# Run workflow on every push to the master branch
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
   build-and-test:
-    # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
