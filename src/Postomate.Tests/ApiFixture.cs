@@ -22,6 +22,6 @@ namespace Postomate.Tests
         public TestApiClient.swaggerClient ApiClient { get; }
 
 
-        public RequestCollection PostmanCollection(ITestOutputHelper output) => Postomate.Postman.RequestCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
+        public RequestCollection PostmanCollection(ITestOutputHelper output) => RequestCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
     }
 }
