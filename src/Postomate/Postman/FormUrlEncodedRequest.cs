@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Net.Http;
-using System.Text.Json;
-
-namespace Postomate
+﻿namespace Postomate.Postman
 {
-    //public class PostmanFormUrlEncodedRequest : PostmanRequestBase
+    //public class FormUrlEncodedRequest : RequestBase
     //{
-    //    public PostmanFormUrlEncodedRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
+    //    public FormUrlEncodedRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
     //    {
     //        var request = enrichedElement.RequireProperty("request");
 

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-
-namespace Postomate
+﻿namespace Postomate.Postman
 {
-    //public class PostmanGrapqhQlRequest : PostmanRequestBase
+    //public class GrapqhQlRequest : RequestBase
     //{
-    //    public PostmanGrapqhQlRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
+    //    public GrapqhQlRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
     //    {
     //        var request = enrichedElement.RequireProperty("request");
     //        var graphql = request.RequireProperty("body").RequireProperty("graphql");
