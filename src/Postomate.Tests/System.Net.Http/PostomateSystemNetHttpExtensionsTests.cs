@@ -10,7 +10,7 @@ namespace Postomate.Tests.System.Net.Http
     public class PostomateSystemNetHttpExtensionsTests : IClassFixture<ApiFixture>
     {
         private readonly HttpClient api;
-        private readonly PostmanFolder folder;
+        private readonly RequestFolder folder;
 
         public PostomateSystemNetHttpExtensionsTests(ApiFixture fixture, ITestOutputHelper output)
         {

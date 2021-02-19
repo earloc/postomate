@@ -34,15 +34,15 @@ namespace Postomate.Postman
         }
 
 
-        public PostmanFolder FindFolder(string name)
+        public RequestFolder FindFolder(string name)
         {
             var item = FindItemRecursive(rawContent.RootElement, _ => _.Contains(name));
 
             if (!item.HasValue)
             {
-                return new PostmanFolder("root", rawContent.RootElement, this);
+                return new RequestFolder("root", rawContent.RootElement, this);
             }
-            return new PostmanFolder(name, item.Value, this);
+            return new RequestFolder(name, item.Value, this);
         }
 
         public JsonElement? FindItemRecursive(JsonElement element, Func<string, bool> predicate)

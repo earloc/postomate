@@ -4,13 +4,13 @@ using System.Text.RegularExpressions;
 
 namespace Postomate.Postman
 {
-    public class PostmanFolder
+    public class RequestFolder
     {
         private readonly string name;
         private readonly JsonElement element;
         private readonly RequestCollection collection;
 
-        public PostmanFolder(string name, JsonElement element, RequestCollection collection)
+        public RequestFolder(string name, JsonElement element, RequestCollection collection)
         {
             this.name = name;
             this.element = element;

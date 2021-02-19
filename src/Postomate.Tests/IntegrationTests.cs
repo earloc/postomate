@@ -20,7 +20,7 @@ namespace Postomate.Tests
         private readonly HttpClient api;
         private readonly swaggerClient client;
         private readonly IVariableContext variables;
-        private readonly PostmanFolder folder;
+        private readonly RequestFolder folder;
 
         public IntegrationTests(ApiFixture fixture, ITestOutputHelper output)
         {
