@@ -52,6 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Postomate.Extensions.System.Net.Http\Postomate.Extensions.System.Net.Http.csproj" />
     <ProjectReference Include="..\Postomate.System.Net.Http\Postomate.Extensions.System.Net.Http.csproj" />
     <ProjectReference Include="..\Postomate.Tests.Api\Postomate.Tests.Api.csproj" />
     <ProjectReference Include="..\Postomate\Postomate.csproj" />
