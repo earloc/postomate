@@ -20,14 +20,13 @@ jobs:
         dotnet-version: 5.0.102
     
     - name: Install GitVersion
-      continue-on-error: true
-      uses: gittools/actions/gitversion/setup@v0.9.7
+      uses: gittools/actions/gitversion/setup@v0.9.9
       with:
-          versionSpec: '6.x'
+          versionSpec: '5.x'
 
     - name: Use GitVersion
       id: gitversion # step id used as reference for output values
-      uses: gittools/actions/gitversion/execute@v0.9.7
+      uses: gittools/actions/gitversion/execute@v0.9.9
     - run: |
         echo "Major: ${{ steps.gitversion.outputs.major }}"
         echo "Minor: ${{ steps.gitversion.outputs.minor }}"
