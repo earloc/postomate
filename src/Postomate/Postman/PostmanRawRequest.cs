@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Postomate.Postman
 {
-    public class PostmanRawRequest: PostmanRequestBase
+    public class PostmanRawRequest: RequestBase
     {
         public PostmanRawRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
         {
