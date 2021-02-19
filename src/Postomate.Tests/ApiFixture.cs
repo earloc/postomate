@@ -14,8 +14,12 @@ namespace Postomate.Tests
                 .UseStartup<Startup>());
 
             Api = server.CreateClient();
+            ApiClient = new TestApiClient.swaggerClient(Api);
         }
         public HttpClient Api { get; }
+
+        public TestApiClient.swaggerClient ApiClient { get; }
+
 
         public PostmanCollection PostmanCollection(ITestOutputHelper output) => Postomate.PostmanCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
     }
