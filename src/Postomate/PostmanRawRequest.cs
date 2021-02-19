@@ -11,12 +11,16 @@ namespace Postomate
         {
             Name = enrichedElement.TryGetProperty("name")?.GetString() ?? "";
 
-            var request = enrichedElement.TryGetProperty("request");
-            var bodyElement = request?.TryGetProperty("body");
+            var requestElement = enrichedElement.TryGetProperty("request");
+            var bodyElement = requestElement?.TryGetProperty("body");
 
             Body = bodyElement?.TryGetProperty("raw")?.GetString() ?? "";
 
-            var bodyLanguage = bodyElement?.TryGetProperty("options")?.TryGetProperty("raw")?.TryGetProperty("language")?.GetString() ?? "";
+            var bodyLanguage = bodyElement?
+                .TryGetProperty("options")?
+                .TryGetProperty("raw")?
+                .TryGetProperty("language")?
+                .GetString() ?? "";
 
             InferredContentType = bodyLanguage switch
             {
