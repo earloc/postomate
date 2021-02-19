@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Postomate.Postman;
 using System;
 using System.Net.Http;
 using Xunit;

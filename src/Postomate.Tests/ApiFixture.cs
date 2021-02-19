@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Postomate.Postman;
 using Postomate.Tests.Api;
 using System.Net.Http;
 using Xunit.Abstractions;
@@ -21,6 +22,6 @@ namespace Postomate.Tests
         public TestApiClient.swaggerClient ApiClient { get; }
 
 
-        public PostmanCollection PostmanCollection(ITestOutputHelper output) => Postomate.PostmanCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
+        public PostmanCollection PostmanCollection(ITestOutputHelper output) => Postomate.Postman.PostmanCollection.Load("postomate.postman_collection.json", message => output.WriteLine(message));
     }
 }

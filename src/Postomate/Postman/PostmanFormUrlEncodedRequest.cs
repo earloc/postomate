@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 
-namespace Postomate
+namespace Postomate.Postman
 {
     //public class PostmanFormUrlEncodedRequest : PostmanRequestBase
     //{

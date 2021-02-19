@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Postomate
+namespace Postomate.Postman
 {
 
     public abstract class PostmanRequestBase

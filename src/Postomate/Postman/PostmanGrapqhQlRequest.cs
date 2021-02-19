@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text.Json;
 
-namespace Postomate
+namespace Postomate.Postman
 {
     //public class PostmanGrapqhQlRequest : PostmanRequestBase
     //{

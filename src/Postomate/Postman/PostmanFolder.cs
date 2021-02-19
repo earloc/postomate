@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Postomate
+namespace Postomate.Postman
 {
     public class PostmanFolder
     {

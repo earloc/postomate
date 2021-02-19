@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Postomate
+namespace Postomate.Postman
 {
 
     public class PostmanCollection
