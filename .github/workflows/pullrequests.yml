@@ -1,8 +1,6 @@
 name: postomate
 
-on:
-  pull_request:
-    branches: [ main ]
+on: workflow_dispatch
 
 jobs:
   pr-build-and-test:
