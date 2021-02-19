@@ -1,16 +1,15 @@
-﻿using System;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Postomate
+namespace Postomate.Postman
 {
-    public class PostmanFolder
+    public class RequestFolder
     {
         private readonly string name;
         private readonly JsonElement element;
-        private readonly PostmanCollection collection;
+        private readonly RequestCollection collection;
 
-        public PostmanFolder(string name, JsonElement element, PostmanCollection collection)
+        public RequestFolder(string name, JsonElement element, RequestCollection collection)
         {
             this.name = name;
             this.element = element;
@@ -44,11 +43,11 @@ namespace Postomate
         //public PostmanGrapqhQlRequest FindGrapqhQl(string name, IVariableContext? context = null)
         //    => new PostmanGrapqhQlRequest(FindBy(name), context, collection.Log);
 
-        public PostmanRawRequest FindRaw(Regex regex, IVariableContext? context = null) 
-            => new PostmanRawRequest(FindBy(regex), context, collection.Log);
+        public RawRequest FindRaw(Regex regex, IVariableContext? context = null) 
+            => new RawRequest(FindBy(regex), context, collection.Log);
 
-        public PostmanRawRequest FindRaw(string name, IVariableContext? context = null) 
-            => new PostmanRawRequest(FindBy(name), context, collection.Log);
+        public RawRequest FindRaw(string name, IVariableContext? context = null) 
+            => new RawRequest(FindBy(name), context, collection.Log);
 
         //public PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, IVariableContext? context = null)
         //    => new PostmanFormUrlEncodedRequest(FindBy(regex), context, collection.Log);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -7,10 +6,10 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Postomate
+namespace Postomate.Postman
 {
 
-    public abstract class PostmanRequestBase
+    public abstract class RequestBase
     {
         protected readonly JsonElement enrichedElement;
 
@@ -24,7 +23,7 @@ namespace Postomate
         public AuthenticationHeaderValue? Authorization { get; }
         public IDictionary<string, string> Headers { get; } = new Dictionary<string, string>();
 
-        protected PostmanRequestBase(JsonElement element, IVariableContext? context = null, Action<string>? log = null)
+        protected RequestBase(JsonElement element, IVariableContext? context = null, Action<string>? log = null)
         {
             this.log = new Action<string>(message => log?.Invoke(message));
 

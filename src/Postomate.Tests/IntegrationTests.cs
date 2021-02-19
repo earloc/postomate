@@ -1,10 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Postomate.Postman;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using TestApiClient;
 using Xunit;
@@ -15,11 +12,11 @@ namespace Postomate.Tests
     public class IntegrationTests : IClassFixture<ApiFixture>
     {
 
-        private readonly PostmanCollection sut;
+        private readonly RequestCollection sut;
         private readonly HttpClient api;
         private readonly swaggerClient client;
         private readonly IVariableContext variables;
-        private readonly PostmanFolder folder;
+        private readonly RequestFolder folder;
 
         public IntegrationTests(ApiFixture fixture, ITestOutputHelper output)
         {

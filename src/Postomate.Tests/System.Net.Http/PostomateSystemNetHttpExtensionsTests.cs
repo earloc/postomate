@@ -1,5 +1,5 @@
 using FluentAssertions;
-using System;
+using Postomate.Postman;
 using System.Net.Http;
 using Xunit;
 using Xunit.Abstractions;
@@ -9,7 +9,7 @@ namespace Postomate.Tests.System.Net.Http
     public class PostomateSystemNetHttpExtensionsTests : IClassFixture<ApiFixture>
     {
         private readonly HttpClient api;
-        private readonly PostmanFolder folder;
+        private readonly RequestFolder folder;
 
         public PostomateSystemNetHttpExtensionsTests(ApiFixture fixture, ITestOutputHelper output)
         {
