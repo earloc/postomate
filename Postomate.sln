@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Tests", "src\Post
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Tests.Api", "src\Postomate.Tests.Api\Postomate.Tests.Api.csproj", "{F543F73E-257D-4CD3-B875-F58AD71C649E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Extensions.System.Net.Http", "src\Postomate.System.Net.Http\Postomate.Extensions.System.Net.Http.csproj", "{8578530A-5573-46D5-98C5-B36B7C31A6FA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.Net.Http", "System.Net.Http", "{C8752BB8-B5BF-4D44-BBD4-50AC59415061}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Extensions.System.Net.Http", "src\Postomate.Extensions.System.Net.Http\Postomate.Extensions.System.Net.Http.csproj", "{2EB72B43-8B1D-46C9-9D61-754EEC459E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,16 +31,16 @@ Global
 		{F543F73E-257D-4CD3-B875-F58AD71C649E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F543F73E-257D-4CD3-B875-F58AD71C649E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F543F73E-257D-4CD3-B875-F58AD71C649E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8578530A-5573-46D5-98C5-B36B7C31A6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB72B43-8B1D-46C9-9D61-754EEC459E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB72B43-8B1D-46C9-9D61-754EEC459E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB72B43-8B1D-46C9-9D61-754EEC459E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB72B43-8B1D-46C9-9D61-754EEC459E48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8578530A-5573-46D5-98C5-B36B7C31A6FA} = {C8752BB8-B5BF-4D44-BBD4-50AC59415061}
+		{2EB72B43-8B1D-46C9-9D61-754EEC459E48} = {C8752BB8-B5BF-4D44-BBD4-50AC59415061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFFB83A9-76E0-43BC-963D-0C63B3FA0FEB}
