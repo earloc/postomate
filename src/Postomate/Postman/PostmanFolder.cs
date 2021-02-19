@@ -8,9 +8,9 @@ namespace Postomate.Postman
     {
         private readonly string name;
         private readonly JsonElement element;
-        private readonly PostmanCollection collection;
+        private readonly RequestCollection collection;
 
-        public PostmanFolder(string name, JsonElement element, PostmanCollection collection)
+        public PostmanFolder(string name, JsonElement element, RequestCollection collection)
         {
             this.name = name;
             this.element = element;

@@ -15,7 +15,7 @@ namespace Postomate.Tests
     public class PostmanCollectionTests : IClassFixture<ApiFixture>
     {
 
-        private readonly PostmanCollection sut;
+        private readonly RequestCollection sut;
         private readonly HttpClient api;
         private readonly MutableVariableContext variables;
 

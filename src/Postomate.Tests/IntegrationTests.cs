@@ -16,7 +16,7 @@ namespace Postomate.Tests
     public class IntegrationTests : IClassFixture<ApiFixture>
     {
 
-        private readonly PostmanCollection sut;
+        private readonly RequestCollection sut;
         private readonly HttpClient api;
         private readonly swaggerClient client;
         private readonly IVariableContext variables;

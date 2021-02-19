@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Postomate.Postman
 {
 
-    public class PostmanCollection
+    public class RequestCollection
     {
 
         readonly JsonDocument rawContent;
@@ -17,17 +17,17 @@ namespace Postomate.Postman
 
         public void Log(string message) => log(message);
 
-        public static PostmanCollection Load(string path, Action<string>? log = null)
+        public static RequestCollection Load(string path, Action<string>? log = null)
         {
             var content = File.ReadAllText(path);
             var json = JsonDocument.Parse(content);
 
             log?.Invoke($"using postman-collection '{Path.GetFullPath(path)}'");
 
-            return new PostmanCollection(json, log);
+            return new RequestCollection(json, log);
         }
 
-        public PostmanCollection(JsonDocument rawContent, Action<string>? log = null)
+        public RequestCollection(JsonDocument rawContent, Action<string>? log = null)
         {
             this.rawContent = rawContent;
             this.log = log ?? new Action<string>((message) => Console.WriteLine(message));
