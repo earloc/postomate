@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System.Net.Http", "System.N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postomate.Extensions.System.Net.Http", "src\Postomate.Extensions.System.Net.Http\Postomate.Extensions.System.Net.Http.csproj", "{2EB72B43-8B1D-46C9-9D61-754EEC459E48}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3F95AC8D-8820-4EDD-9491-C2C975A14B43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B6A7755A-9E37-4A6C-AD39-5E13E0F5397D} = {3F95AC8D-8820-4EDD-9491-C2C975A14B43}
+		{F543F73E-257D-4CD3-B875-F58AD71C649E} = {3F95AC8D-8820-4EDD-9491-C2C975A14B43}
 		{2EB72B43-8B1D-46C9-9D61-754EEC459E48} = {C8752BB8-B5BF-4D44-BBD4-50AC59415061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
