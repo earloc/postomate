@@ -19,7 +19,7 @@ namespace Postomate.Tests.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class Postman_AutomationFeature : object, Xunit.IClassFixture<Postman_AutomationFeature.FixtureData>, System.IDisposable
+    public partial class PostmanAutomationFeature : object, Xunit.IClassFixture<PostmanAutomationFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Postomate.Tests.Features
 #line 1 "PostmanAutomation.feature"
 #line hidden
         
-        public Postman_AutomationFeature(Postman_AutomationFeature.FixtureData fixtureData, Postomate_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public PostmanAutomationFeature(PostmanAutomationFeature.FixtureData fixtureData, Postomate_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,7 @@ namespace Postomate.Tests.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Postman-Automation", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PostmanAutomation", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,6 +80,52 @@ namespace Postomate.Tests.Features
             this.TestTearDown();
         }
         
+        [Xunit.SkippableTheoryAttribute(DisplayName="A person can be created via postman-automation")]
+        [Xunit.TraitAttribute("FeatureTitle", "PostmanAutomation")]
+        [Xunit.TraitAttribute("Description", "A person can be created via postman-automation")]
+        [Xunit.InlineDataAttribute("Arthur", "Dent", "200", new string[0])]
+        [Xunit.InlineDataAttribute("Zaphod", "Beeblebrox", "200", new string[0])]
+        public virtual void APersonCanBeCreatedViaPostman_Automation(string firstName, string surname, string response_Statuscode, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("surname", surname);
+            argumentsOfScenario.Add("response-statuscode", response_Statuscode);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A person can be created via postman-automation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 4
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+ testRunner.Given(string.Format("the person \'{0}\' \'{1}\'", firstName, surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 7
+ testRunner.When("the person is posted to the api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 8
+ testRunner.Then(string.Format("the response-statuscode is \'{0}\'", response_Statuscode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable
@@ -87,12 +133,12 @@ namespace Postomate.Tests.Features
             
             public FixtureData()
             {
-                Postman_AutomationFeature.FeatureSetup();
+                PostmanAutomationFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                Postman_AutomationFeature.FeatureTearDown();
+                PostmanAutomationFeature.FeatureTearDown();
             }
         }
     }

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Postomate.Tests.Api.Controllers;
+using System.Collections.Generic;
 
 namespace Postomate.Tests.Api
 {
@@ -20,6 +22,8 @@ namespace Postomate.Tests.Api
         {
             services.AddControllers();
             services.AddSwaggerGen();
+
+            services.AddSingleton<IDictionary<string, Person>>(services => new Dictionary<string, Person>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

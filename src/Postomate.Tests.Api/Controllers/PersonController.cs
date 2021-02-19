@@ -19,14 +19,15 @@ namespace Postomate.Tests.Api.Controllers
     [Route("[controller]")]
     public class PersonController : ControllerBase
     {
-        private readonly ILogger<PersonController> _logger;
+        private readonly ILogger<PersonController> logger;
 
-        public PersonController(ILogger<PersonController> logger)
+        public PersonController(ILogger<PersonController> logger, IDictionary<string, Person> persons)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.persons = persons;
         }
 
-        private static readonly Dictionary<string, Person> persons = new Dictionary<string, Person>();
+        private readonly IDictionary<string, Person> persons;
 
         [HttpGet]
         public IEnumerable<Person> Get() => persons.Values;

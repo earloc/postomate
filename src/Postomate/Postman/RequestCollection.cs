@@ -13,6 +13,9 @@ namespace Postomate.Postman
 
         public void Log(string message) => log(message);
 
+        public RequestFolder Root { get; }
+
+
         public static RequestCollection Load(string path, Action<string>? log = null)
         {
             var content = File.ReadAllText(path);
@@ -27,8 +30,9 @@ namespace Postomate.Postman
         {
             this.rawContent = rawContent;
             this.log = log ?? new Action<string>((message) => Console.WriteLine(message));
-        }
 
+            Root = new RequestFolder("root", rawContent.RootElement, this);
+        }
 
         public RequestFolder FindFolder(string name)
         {
@@ -36,7 +40,7 @@ namespace Postomate.Postman
 
             if (!item.HasValue)
             {
-                return new RequestFolder("root", rawContent.RootElement, this);
+                return Root;
             }
             return new RequestFolder(name, item.Value, this);
         }

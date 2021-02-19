@@ -9,6 +9,10 @@ namespace Postomate.Tests
 {
     public class ApiFixture
     {
+
+
+        
+
         public ApiFixture()
         {
             var server = new TestServer(new WebHostBuilder()
