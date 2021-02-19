@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Net.Http;
-using System.Text.Json;
-
-namespace Postomate.Postman
+﻿namespace Postomate.Postman
 {
     //public class FormUrlEncodedRequest : RequestBase
     //{

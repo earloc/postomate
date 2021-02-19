@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-
-namespace Postomate.Postman
+﻿namespace Postomate.Postman
 {
     //public class GrapqhQlRequest : RequestBase
     //{

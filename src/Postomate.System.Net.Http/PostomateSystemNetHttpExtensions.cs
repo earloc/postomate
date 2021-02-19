@@ -1,11 +1,6 @@
-﻿using Postomate;
-using Postomate.Postman;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Postomate.Postman;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Postomate
 {
