@@ -2,7 +2,7 @@
 
 namespace System
 {
-    public static class JsonExtensions
+    internal static class JsonExtensions
     {
         public static string ToJson(this object that, bool indented)
         {

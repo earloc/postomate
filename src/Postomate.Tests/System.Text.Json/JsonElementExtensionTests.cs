@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Xunit;
 
-namespace Postomate.Tests.System.Text.Json
+namespace Postomate.Tests
 {
     public class JsonElementExtensionTests
     {

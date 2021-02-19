@@ -4,7 +4,7 @@ using System.Net.Http;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Postomate.Tests.System.Net.Http
+namespace Postomate.Tests
 {
     public class PostomateSystemNetHttpExtensionsTests : IClassFixture<ApiFixture>
     {
