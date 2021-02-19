@@ -14,11 +14,11 @@ namespace Postomate
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="postmanRequest">The <see cref="PostmanRawRequest"/> to build the <see cref="HttpRequestMessage"/> from</param>
-        /// <param name="contentType">The override content-type. Defaults to the <see cref="PostmanRawRequest"/> Content-Type, if specified</param>
+        /// <param name="postmanRequest">The <see cref="RawRequest"/> to build the <see cref="HttpRequestMessage"/> from</param>
+        /// <param name="contentType">The override content-type. Defaults to the <see cref="RawRequest"/> Content-Type, if specified</param>
         /// <param name="encoding">Defaults to <see cref="Encoding.UTF8"/>, when null</param>
         /// <returns></returns>
-        public static HttpRequestMessage ToHttpRequestMessage(this PostmanRawRequest postmanRequest, string? contentType = null, Encoding? encoding = null)
+        public static HttpRequestMessage ToHttpRequestMessage(this RawRequest postmanRequest, string? contentType = null, Encoding? encoding = null)
         {
             var requestMessage = new HttpRequestMessage(postmanRequest.Method, postmanRequest.Url);
 

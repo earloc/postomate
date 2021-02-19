@@ -44,11 +44,11 @@ namespace Postomate.Postman
         //public PostmanGrapqhQlRequest FindGrapqhQl(string name, IVariableContext? context = null)
         //    => new PostmanGrapqhQlRequest(FindBy(name), context, collection.Log);
 
-        public PostmanRawRequest FindRaw(Regex regex, IVariableContext? context = null) 
-            => new PostmanRawRequest(FindBy(regex), context, collection.Log);
+        public RawRequest FindRaw(Regex regex, IVariableContext? context = null) 
+            => new RawRequest(FindBy(regex), context, collection.Log);
 
-        public PostmanRawRequest FindRaw(string name, IVariableContext? context = null) 
-            => new PostmanRawRequest(FindBy(name), context, collection.Log);
+        public RawRequest FindRaw(string name, IVariableContext? context = null) 
+            => new RawRequest(FindBy(name), context, collection.Log);
 
         //public PostmanFormUrlEncodedRequest FindFormUrlEncoded(Regex regex, IVariableContext? context = null)
         //    => new PostmanFormUrlEncodedRequest(FindBy(regex), context, collection.Log);

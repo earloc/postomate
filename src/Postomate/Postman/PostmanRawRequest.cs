@@ -5,9 +5,9 @@ using System.Text.Json;
 
 namespace Postomate.Postman
 {
-    public class PostmanRawRequest: RequestBase
+    public class RawRequest: RequestBase
     {
-        public PostmanRawRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
+        public RawRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
         {
             Name = enrichedElement.TryGetProperty("name")?.GetString() ?? "";
 
