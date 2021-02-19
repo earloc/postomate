@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TestApiClient;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -16,6 +17,7 @@ namespace Postomate.Tests
 
         private readonly PostmanCollection sut;
         private readonly HttpClient api;
+        private readonly swaggerClient client;
         private readonly IVariableContext variables;
         private readonly PostmanFolder folder;
 
@@ -23,6 +25,7 @@ namespace Postomate.Tests
         {
             sut = fixture.PostmanCollection(output);
             api = fixture.Api;
+            client = fixture.ApiClient;
 
             variables = new ImmutableVariableContext(new
             {
@@ -57,11 +60,18 @@ namespace Postomate.Tests
             var createZaphodResponse = await api.SendAsync(createZaphodRequest.ToHttpRequestMessage());
             createZaphodResponse.StatusCode.Should().Be(StatusCodes.Status200OK, "we need Zaphods heads - all of them!");
 
-            var response = await api.SendAsync(getRequest.ToHttpRequestMessage());
-            response.StatusCode.Should().Be(StatusCodes.Status200OK, "this should work ;)");
-            var responseContent = await response.Content.ReadAsStringAsync();
+            var persons = await client.PersonAllAsync();
 
-            responseContent.Should().NotBe("[]", "in the end, there should be persons");
+            persons.Should().BeEquivalentTo(new Person[]
+            {
+                new() { FirstName = "Arthur", Surname = "Dent" },
+                new() { FirstName = "Zaphod", Surname = "Beeblebrox" }
+            },
+            config => config
+                .Excluding(_ => _.Id)
+                .Excluding(_ => _.CreatedAt)
+            , "these should have been created");
+
         }
     }
 }
