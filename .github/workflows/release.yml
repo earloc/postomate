@@ -18,9 +18,10 @@ jobs:
         dotnet-version: 5.0.102
     
     - name: Install GitVersion
+      continue-on-error: true
       uses: gittools/actions/gitversion/setup@v0.9
       with:
-          versionSpec: '5.1.x'
+          versionSpec: '6.x'
 
     - name: Use GitVersion
       id: gitversion # step id used as reference for output values
@@ -58,3 +59,4 @@ jobs:
         echo "CommitDate: ${{ steps.gitversion.outputs.commitDate }}"
 
 
+ 
