@@ -59,5 +59,20 @@ jobs:
         echo "CommitsSinceVersionSourcePadded: ${{ steps.gitversion.outputs.commitsSinceVersionSourcePadded }}"
         echo "CommitDate: ${{ steps.gitversion.outputs.commitDate }}"
 
+    - name: restore
+      run: dotnet restore
 
+    - name: build
+      run: dotnet build -c Release --nologo --no-restore /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemFileVer }} /p:FileVersion=${{ steps.gitversion.outputs.assemblySemFileVer }} /p:InformationalVersion=${{ steps.gitversion.outputs.Sha }}
+
+    - name: test
+      run: dotnet test -c Release --no-build /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+
+    - name: package
+      run: dotnet pack -c Release --no-build -o nuget /p:Version=${{ steps.gitversion.outputs.nuGetVersionV2 }}"
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: "Postomate-${{ steps.gitversion.outputs.fullSemVer }}"
+        path: nuget
  
