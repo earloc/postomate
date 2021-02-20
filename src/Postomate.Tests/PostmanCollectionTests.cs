@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Postomate.Postman;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using Xunit;

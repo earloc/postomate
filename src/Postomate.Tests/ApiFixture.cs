@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Postomate.Postman;
 using Postomate.Tests.Api;
 using System.Net.Http;
 using Xunit.Abstractions;

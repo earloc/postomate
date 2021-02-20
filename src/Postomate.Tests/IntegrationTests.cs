@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Http;
-using Postomate.Postman;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TestApiClient;

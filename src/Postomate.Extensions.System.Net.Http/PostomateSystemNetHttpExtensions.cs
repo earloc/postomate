@@ -1,5 +1,4 @@
-﻿using Postomate.Postman;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
 
 namespace Postomate
