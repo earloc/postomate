@@ -76,3 +76,12 @@ jobs:
         name: "Postomate-${{ steps.gitversion.outputs.fullSemVer }}"
         path: nuget
  
+    - name: publish Postomate
+      run: dotnet nuget push ./nuget/Postomate.${{ steps.gitversion.outputs.fullSemVer }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }}  -s https://api.nuget.org/v3/index.json
+
+    - name: publish Postomate.Extensions.System.Net.Http
+      run: dotnet nuget push ./nuget/Postomate.Extensions.System.Net.Http.${{ steps.gitversion.outputs.fullSemVer }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }}  -s https://api.nuget.org/v3/index.json
+        
+
+        
+        
