@@ -4,10 +4,24 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>9.0</LangVersion>
+    <Product>Postomate</Product>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/earloc/postomate</PackageProjectUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>postman automation</PackageTags>
+    <RepositoryUrl>https://github.com/earloc/postomate</RepositoryUrl>
+    <Description>A library to automate and orchestrate requests out of a postman-collection - with .NET</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Postomate\Postomate.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
