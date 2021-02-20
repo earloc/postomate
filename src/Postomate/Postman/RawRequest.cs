@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 
-namespace Postomate.Postman
+namespace Postomate
 {
     public class RawRequest: RequestBase
     {

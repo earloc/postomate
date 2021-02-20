@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Postomate.Postman
+namespace Postomate
 {
     public class RequestFolder
     {

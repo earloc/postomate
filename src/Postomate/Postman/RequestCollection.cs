@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace Postomate.Postman
+namespace Postomate
 {
 
     public class RequestCollection

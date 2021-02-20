@@ -1,4 +1,4 @@
-﻿namespace Postomate.Postman
+﻿namespace Postomate
 {
     //public class FormUrlEncodedRequest : RequestBase
     //{
