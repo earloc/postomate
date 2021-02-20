@@ -7,6 +7,13 @@ namespace Postomate
 
     public class RequestCollection
     {
+        public interface IRequestCollectionSource
+        {
+            string Read();
+            JsonDocument Parse();
+        }
+
+        
 
         readonly JsonDocument rawContent;
         private readonly Action<string> log;
@@ -16,12 +23,9 @@ namespace Postomate
         public RequestFolder Root { get; }
 
 
-        public static RequestCollection Load(string path, Action<string>? log = null)
+        public static RequestCollection Load(IRequestCollectionSource source, Action<string>? log = null)
         {
-            var content = File.ReadAllText(path);
-            var json = JsonDocument.Parse(content);
-
-            log?.Invoke($"using postman-collection '{Path.GetFullPath(path)}'");
+            var json = source.Parse();
 
             return new RequestCollection(json, log);
         }
@@ -67,4 +71,6 @@ namespace Postomate
             return null;
         }
     }
+
+    
 }
