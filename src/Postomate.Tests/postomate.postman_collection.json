@@ -35,6 +35,9 @@
 									"pm.variables.set(\"firstName\", \"Arthur\")\r",
 									"pm.variables.set(\"surname\", \"Dent\")\r",
 									"pm.variables.set(\"unused\", \"towel\")\r",
+									"pm.test(\"test\", () => {\r",
+									"    log(\"helloworld\");\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"

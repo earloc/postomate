@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Jint;
+using Jint.Native;
 using Postomate.Postman;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Postomate.Tests
         private readonly RequestCollection sut;
         private readonly HttpClient api;
         private readonly MutableVariableContext variables;
+        private readonly ITestOutputHelper output;
 
         public PostmanCollectionTests(ApiFixture fixture, ITestOutputHelper output)
         {
@@ -27,6 +29,7 @@ namespace Postomate.Tests
             variables = new MutableVariableContext(new {
                 baseUrl = api.BaseAddress?.ToString().Trim('/') ?? "http://localhost:5042"
             });
+            this.output = output;
         }
 
         [Theory]
@@ -142,7 +145,6 @@ namespace Postomate.Tests
         [InlineData("Tests", "PostPerson")]
         public void A_PreRequestScript_Can_Set_Variables(string folderName, string requestName)
         {
-
             var localVariables = new MutableVariableContext(new { foo = "bar" });
 
             var folder = sut.FindFolder(folderName);
@@ -153,13 +155,10 @@ namespace Postomate.Tests
             var pm = new PostmanEmulator(localVariables);
 
             var engine = new Engine()
-                .SetValue("pm", pm);
+                .SetValue("pm", pm)
+                .SetValue("log", new Action<string>(output.WriteLine));
 
-
-            foreach (var line in request.Events.PreRequestScript)
-            {
-                engine.Execute(line);
-            }
+            engine.Execute(string.Join(Environment.NewLine, request.Events.PreRequestScript));
 
             localVariables.Variables.Should().BeEquivalentTo(new Dictionary<string, string>()
             {
@@ -178,6 +177,10 @@ namespace Postomate.Tests
                 this.Variables = variables;
             }
 
+            public void Test(string name, JsValue javaScript)
+            {
+                javaScript.Invoke();
+            }
 
             public MutableVariableContext Variables { get; }
         }
