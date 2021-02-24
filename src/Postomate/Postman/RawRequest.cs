@@ -8,6 +8,7 @@ namespace Postomate.Postman
         public RawRequest(JsonElement element, IVariableContext? context, Action<string> log) : base(element, context, log)
         {
             Name = enrichedElement.TryGetProperty("name")?.GetString() ?? "";
+            Events = new RequestEvents(enrichedElement.TryGetProperty("event"));
 
             var requestElement = enrichedElement.TryGetProperty("request");
             var bodyElement = requestElement?.TryGetProperty("body");
@@ -36,5 +37,7 @@ namespace Postomate.Postman
         public string? InferredContentType { get; }
 
         public string Name { get; }
+
+        public RequestEvents Events { get; }
     }
 }

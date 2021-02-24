@@ -1,5 +1,9 @@
 ﻿using FluentAssertions;
+using Jint;
 using Postomate.Postman;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using Xunit;
@@ -20,7 +24,7 @@ namespace Postomate.Tests
             sut = fixture.PostmanCollection(output);
             api = fixture.Api;
 
-            variables = new MutableVariableContext(new { 
+            variables = new MutableVariableContext(new {
                 baseUrl = api.BaseAddress?.ToString().Trim('/') ?? "http://localhost:5042"
             });
         }
@@ -75,7 +79,7 @@ namespace Postomate.Tests
         public void Finding_A_Get_RawRequest_Substitutes_Variables(string folderName, string requestName)
         {
             var folder = sut.FindFolder(folderName);
-            var request = folder.FindRaw(requestName, variables );
+            var request = folder.FindRaw(requestName, variables);
 
             request.EnrichedContent.Should().NotBe(request.RawContent, "we expect them to be unequal");
         }
@@ -91,7 +95,7 @@ namespace Postomate.Tests
                 .Throw<UnsubstitutedVariablesException>()
                 .Which.Variables
                 .Should()
-                .BeEquivalentTo(new [] { "{{baseUrl}}", "{{firstName}}", "{{surname}}" }, 
+                .BeEquivalentTo(new[] { "{{baseUrl}}", "{{firstName}}", "{{surname}}" },
                     "these should be all variables defined in the request"
                 );
         }
@@ -132,6 +136,50 @@ namespace Postomate.Tests
                 .Throw<RequestNotFoundException>()
                 .WithMessage($"Could not find request matching '{requestName}' in folder 'root'")
             ;
+        }
+
+        [Theory]
+        [InlineData("Tests", "PostPerson")]
+        public void A_PreRequestScript_Can_Set_Variables(string folderName, string requestName)
+        {
+
+            var localVariables = new MutableVariableContext(new { foo = "bar" });
+
+            var folder = sut.FindFolder(folderName);
+            var request = folder.FindRaw(requestName, localVariables);
+
+            request.Events.PreRequestScript.Should().NotBeNullOrEmpty();
+
+            var pm = new PostmanEmulator(localVariables);
+
+            var engine = new Engine()
+                .SetValue("pm", pm);
+
+
+            foreach (var line in request.Events.PreRequestScript)
+            {
+                engine.Execute(line);
+            }
+
+            localVariables.Variables.Should().BeEquivalentTo(new Dictionary<string, string>()
+            {
+                {"foo", "bar"},
+                {"firstName", "Arthur"},
+                {"surname", "Dent"},
+                {"unused", "towel"}
+            }, "those values should be merged together after executing the scripts" );
+
+        }
+
+        class PostmanEmulator {
+
+            public PostmanEmulator(MutableVariableContext variables)
+            {
+                this.Variables = variables;
+            }
+
+
+            public MutableVariableContext Variables { get; }
         }
     }
 }

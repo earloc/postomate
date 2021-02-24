@@ -33,7 +33,9 @@
 							"script": {
 								"exec": [
 									"pm.variables.set(\"firstName\", \"Arthur\")\r",
-									"pm.variables.set(\"surname\", \"Dent\")"
+									"pm.variables.set(\"surname\", \"Dent\")\r",
+									"pm.variables.set(\"unused\", \"towel\")\r",
+									""
 								],
 								"type": "text/javascript"
 							}

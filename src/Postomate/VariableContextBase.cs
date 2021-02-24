@@ -22,6 +22,4 @@ namespace Postomate
 
         public abstract IVariableContext Enrich(object context);
     }
-
-
 }

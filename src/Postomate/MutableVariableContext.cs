@@ -17,5 +17,10 @@
             Variables = IngestVariables(context);
             return this;
         }
+
+        public void Set(string key, string value)
+        {
+            this.Variables[key] = value;
+        }
     }
 }
