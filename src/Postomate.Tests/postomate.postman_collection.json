@@ -33,7 +33,24 @@
 							"script": {
 								"exec": [
 									"pm.variables.set(\"firstName\", \"Arthur\")\r",
-									"pm.variables.set(\"lastName\", \"Dent\")"
+									"pm.variables.set(\"surname\", \"Dent\")"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var payload = pm.response.json();\r",
+									"\r",
+									"pm.test(\"firstName can be persisted\", () => {\r",
+									"    pm.expect(payload.firstName).to.be.eq(pm.variables.get(\"surname\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"surname can be persisted\", () => {\r",
+									"    pm.expect(payload.surname, \"the surname should match\").to.be.eq(pm.variables.get(\"surname\"));\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -254,19 +271,7 @@
 					"name": "text/plain",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "X-POSTOMATE-SAMPLE",
-								"value": "SomeValue",
-								"type": "text"
-							},
-							{
-								"key": "X-POSTOMATE-DISABLED",
-								"value": "true",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "hello world",
@@ -289,19 +294,7 @@
 					"name": "application/javascript",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "X-POSTOMATE-SAMPLE",
-								"value": "SomeValue",
-								"type": "text"
-							},
-							{
-								"key": "X-POSTOMATE-DISABLED",
-								"value": "true",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "alert(\"hello world\";",
@@ -324,19 +317,7 @@
 					"name": "application/json",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "X-POSTOMATE-SAMPLE",
-								"value": "SomeValue",
-								"type": "text"
-							},
-							{
-								"key": "X-POSTOMATE-DISABLED",
-								"value": "true",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"hello\":\"world\"\r\n}",
@@ -359,19 +340,7 @@
 					"name": "text/html",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "X-POSTOMATE-SAMPLE",
-								"value": "SomeValue",
-								"type": "text"
-							},
-							{
-								"key": "X-POSTOMATE-DISABLED",
-								"value": "true",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "<html>\r\n    <body>\r\n        <h1>hello</h1>\r\n        <h2>world</h2>\r\n    </body>\r\n</html>",
@@ -394,19 +363,7 @@
 					"name": "application/xml",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "X-POSTOMATE-SAMPLE",
-								"value": "SomeValue",
-								"type": "text"
-							},
-							{
-								"key": "X-POSTOMATE-DISABLED",
-								"value": "true",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "<hello>\r\n    <world></world>\r\n</hello>",
@@ -430,17 +387,6 @@
 					"request": {
 						"method": "POST",
 						"header": [
-							{
-								"key": "X-POSTOMATE-SAMPLE",
-								"value": "SomeValue",
-								"type": "text"
-							},
-							{
-								"key": "X-POSTOMATE-DISABLED",
-								"value": "true",
-								"type": "text",
-								"disabled": true
-							},
 							{
 								"key": "Content-Type",
 								"value": "custom/contentType",
